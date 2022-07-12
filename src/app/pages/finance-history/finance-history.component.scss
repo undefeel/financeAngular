@@ -1,0 +1,26 @@
+.contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.finance-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-img {
+  width: 30px;
+  height: 30px;
+}
+
+.delete-img {
+  width: 30px;
+  height: 30px;
+}
+
+.finance-elem  {
+  list-style: none;
+  font-size: 20px;
+}

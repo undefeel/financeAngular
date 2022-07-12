@@ -1,3 +1,8 @@
-<ul class="contain" *ngFor="let element of finances">
-  <li class="finance-elem">{{element.text}} {{element.sum}} {{element.date}}</li>
+<ul class="contain" *ngFor="let element of finances; index as i">
+  <div class="finance-container">
+    <li class="finance-elem">{{element.text}} {{element.sum}} {{element.date}}</li>
+    <img src="../../../assets/pencil.png" (click)="openDialog(element, i)" class="edit-img">
+    <img src="../../../assets/delete.png"  class="delete-img" (click)="delete(i)">
+  </div>
 </ul>
+
