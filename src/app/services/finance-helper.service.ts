@@ -9,7 +9,8 @@ import { catchError, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class FinanceHelperService {
-  public List: BehaviorSubject<Ifinance[]> = new BehaviorSubject<Ifinance[]>([])
+  public List: Ifinance[] = [];
+  
   httpOptions = {headers: new HttpHeaders({
       'Content-Type':  'application/json'
     })
@@ -18,17 +19,20 @@ export class FinanceHelperService {
   constructor(private http: HttpClient) { }
 
   public getAllFinance() {
-    
-    return this.http.get<Ifinance>('http://localhost:8001/allFinance');
+    return this.http.get<Ifinance[]>('http://localhost:8001/allFinance')
   }
 
   public addNewFinance (newFinance: Ifinance) {
-    return this.http.post<Ifinance>('http://localhost:8001/createFinance', JSON.stringify(newFinance), {
+    return this.http.post<Ifinance>('http://localhost:8001/createFinance', JSON.stringify(newFinance), this.httpOptions).subscribe(v => {});
+  }
+
+  public updateFinance (updateFinance: Ifinance) {
+    return this.http.patch<Ifinance>('http://localhost:8001/updateFinance', JSON.stringify(updateFinance), {
       headers : {'Content-Type':  'application/json'}
-    }).subscribe(v => {
-      const newArray = [];
-      newArray.push(...this.List.getValue(), v);
-      this.List.next(newArray); 
-    })
+    }).subscribe(v => {})
+  }
+
+  public deleteFinance (deleteFinance: Ifinance) {    
+    return this.http.delete<Ifinance>(`http://localhost:8001/deleteFinance/${deleteFinance._id}`).subscribe(v => {})
   }
 }
