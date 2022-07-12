@@ -2,12 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
 }
 
 .finance-container {
   display: flex;
-  justify-content: center;
+  width: 100vw;
+  justify-content: space-around;
   align-items: center;
+  border-bottom: 1px solid #3f51b5;
 }
 
 .edit-img {
@@ -23,4 +26,8 @@
 .finance-elem  {
   list-style: none;
   font-size: 20px;
+}
+
+button {
+  margin-bottom: 5px;
 }

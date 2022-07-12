@@ -1,8 +1,15 @@
 <div class="container">
   <h1>MyFinance</h1>
   <div class="actions">
-    <input type="text" class="shopName" (change)="getShop($event)" >
-    <input type="text" class="spendSum" (change)="getSum($event)">
-    <button class="addFinanceElem" (click)="addFinance()">Add</button>
+    <mat-form-field class="shop" appearance="outline">
+      <mat-label>Shop</mat-label>
+      <input matInput placeholder="IKEA" (change)="getShop($event)">
+    </mat-form-field>
+    <mat-form-field class = "sum" appearance="outline">
+      <mat-label>Spend</mat-label>
+      <input matInput placeholder="500$" (change)="getSum($event)">
+    </mat-form-field>
+
+    <button mat-raised-button  color = "primary" class="addFinanceElem" (click)="addFinance()">Add</button>
   </div>
 </div>

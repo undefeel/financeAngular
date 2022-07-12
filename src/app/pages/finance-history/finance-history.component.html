@@ -1,8 +1,16 @@
 <ul class="contain" *ngFor="let element of finances; index as i">
   <div class="finance-container">
-    <li class="finance-elem">{{element.text}} {{element.sum}} {{element.date}}</li>
-    <img src="../../../assets/pencil.png" (click)="openDialog(element, i)" class="edit-img">
-    <img src="../../../assets/delete.png"  class="delete-img" (click)="delete(i)">
+    <p class="finance-elem">{{element.text}}</p>
+    <p class="finance-elem">{{element.sum}}</p>
+    <p class="finance-elem">{{element.date}}</p>
+    <div class="buttons">
+      <button mat-icon-button color="primary" (click)="openDialog(element, i)">
+        <mat-icon>edit</mat-icon>
+      </button> 
+      <button mat-icon-button color="primary" (click)="delete(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
   </div>
 </ul>
 
