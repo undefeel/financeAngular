@@ -4,33 +4,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #3f51b5;
-  box-shadow: 1px 5px 5px rgba($color: #3f51b5, $alpha: 0.2);
 }
 
-h1 {
-  color: #3f51b5;
-  margin-top: 20px;
-  margin-bottom: 5px;
-}
 .actions {
-  padding: 25px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-.shop {
-  margin-right: 15px;
+.shopName {
+  margin-right: 5px;
 }
 
-.sum {
-  margin-right: 20px;
-}
-
-button {
-  margin-left: 5px;
-  height: 100%;
+.spendSum {
+  margin-right: 5px;
 }
