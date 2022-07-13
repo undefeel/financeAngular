@@ -6,32 +6,24 @@ import {MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './edit-dialog.component.html',
   styleUrls: ['./edit-dialog.component.scss']
 })
-export class EditDialogComponent implements OnInit {
+export class EditDialogComponent {
 
   constructor(private dialogRef: MatDialogRef<EditDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: {text: string, sum: string}) {}
   canceledData = this.data
 
-  ngOnInit(): void {
+  takeEditShop(event: Event): void {
+    this.data.text = (event.target as HTMLInputElement).value
   }
 
-  takeEditShop(event: any): void {
-    this.data.text = event.target.value
+  takeEditSum(event: Event): void {
+    this.data.sum = (event.target as HTMLInputElement).value
   }
 
-  takeEditSum(event: any): void {
-    this.data.sum = event.target.value
-  }
-
-
-  
-  save(event: any): void {
+  save(): void {
     this.dialogRef.close(this.data)
   }
 
   cancel() {
     this.dialogRef.close(this.canceledData)
   }
-
-
-
 }

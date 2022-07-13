@@ -3,5 +3,5 @@ export interface Ifinance {
   text: string,
   sum: string,
   date?: string
-  _v?: number
+  __v?: number
 }

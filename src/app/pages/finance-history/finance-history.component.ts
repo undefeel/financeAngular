@@ -18,15 +18,12 @@ export class FinanceHistoryComponent implements OnInit {
   ngOnInit(): void {
     this.financeHelper.getAllFinance().subscribe((v: Ifinance[]) => {
       this.finances = v;
-      console.log(v);
-      
     })
   }
 
+  public edit: boolean = false;
 
-  public edit:boolean = false;
-
-  openDialog(element: any, i: number) {
+  openDialog(element: Ifinance) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
