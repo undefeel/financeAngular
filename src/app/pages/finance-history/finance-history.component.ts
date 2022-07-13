@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FinanceHelperService } from 'src/app/services/finance-helper.service';
 import { Ifinance } from 'src/app/interfaces/finance.interface';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 @Component({
@@ -12,17 +13,15 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 export class FinanceHistoryComponent implements OnInit {
   public finances: Ifinance[] = [];
+  displayed_columns: string[] = ['No', 'Shop', 'Spended Sum', 'Date', 'Actions']
 
   constructor(private financeHelper: FinanceHelperService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.financeHelper.getAllFinance().subscribe((v: Ifinance[]) => {
+    this.financeHelper.List.subscribe((v:Ifinance[]) => {      
       this.finances = v;
-      console.log(v);
-      
     })
   }
-
 
   public edit:boolean = false;
 
@@ -45,8 +44,10 @@ export class FinanceHistoryComponent implements OnInit {
 
     dialogR.afterClosed().subscribe(
       data => {        
-        this.financeHelper.updateFinance(data);
-        this.financeHelper.getAllFinance().subscribe((v: Ifinance[]) => {
+        this.financeHelper.updateFinance(data).subscribe((v) => {
+        this.financeHelper.getAllFinance();
+        });
+        this.financeHelper.List.subscribe((v:Ifinance[]) => {
           this.finances = v;
         })
       }
@@ -55,7 +56,8 @@ export class FinanceHistoryComponent implements OnInit {
 
   delete(index: number) {
     this.financeHelper.deleteFinance(this.finances[index]);
-    this.financeHelper.getAllFinance().subscribe((v: Ifinance[]) => {
+    this.financeHelper.getAllFinance();
+    this.financeHelper.List.subscribe((v:Ifinance[]) => {
       this.finances = v;
     })
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FinanceHelperService } from 'src/app/services/finance-helper.service';
 import { Ifinance } from 'src/app/interfaces/finance.interface';
 import { FinanceHistoryComponent } from '../finance-history/finance-history.component';
@@ -14,6 +14,9 @@ export class InputsComponent implements OnInit {
   inpSum: string = '';
   
   constructor(private financeHelper: FinanceHelperService, private history: FinanceHistoryComponent) {  }
+  ngOnInit(): void {
+    this.financeHelper.getAllFinance();
+  }
 
   getShop (event: any) {
     this.inpShop = event.target.value;
@@ -28,11 +31,9 @@ export class InputsComponent implements OnInit {
       text: this.inpShop,
       sum: this.inpSum
     }
-    this.financeHelper.addNewFinance(finance);
-    this.financeHelper.getAllFinance().subscribe((v: Ifinance[]) => {
-      this.history.finances = v;
-    })
-  }
 
-  ngOnInit(): void {    }
+    this.financeHelper.addNewFinance(finance).subscribe((v:Ifinance) => {
+      this.financeHelper.getAllFinance();
+    });
   }
+}

@@ -1,16 +1,38 @@
-<ul class="contain" *ngFor="let element of finances; index as i">
-  <div class="finance-container">
-    <p class="finance-elem">{{element.text}}</p>
-    <p class="finance-elem">{{element.sum}}</p>
-    <p class="finance-elem">{{element.date}}</p>
-    <div class="buttons">
+
+<table mat-table [dataSource]="finances" class="mat-elevation-z8">
+  <ng-container matColumnDef="Shop">
+    <th mat-header-cell *matHeaderCellDef> Shop name </th>
+    <td mat-cell *matCellDef="let element"> {{element.text}}</td>
+  </ng-container>
+  <mat-cell *matCellDef="let row; let i = dataIndex;">{{i}}</mat-cell>
+
+  <ng-container matColumnDef="Spended Sum">
+    <th mat-header-cell *matHeaderCellDef> Spended Sum </th>
+    <td mat-cell *matCellDef="let element"> {{element.sum}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.date}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element; let i = index">
       <button mat-icon-button color="primary" (click)="openDialog(element, i)">
         <mat-icon>edit</mat-icon>
       </button> 
       <button mat-icon-button color="primary" (click)="delete(i)">
         <mat-icon>delete</mat-icon>
       </button>
-    </div>
-  </div>
-</ul>
+  </td>
+  </ng-container>
 
+  <ng-container matColumnDef="No">
+    <mat-header-cell *matHeaderCellDef> No </mat-header-cell>
+    <td mat-cell *matCellDef="let element; let i = index;">{{i}}</td>
+  </ng-container>
+
+  <tr mat-header-row *displayedColumns="displayed_columns" ></tr>
+  <tr mat-row *matRowDef="let row; columns: displayed_columns; let i = index" ></tr>
+</table>
