@@ -23,9 +23,9 @@ export class FinanceHistoryComponent implements OnInit {
     })
   }
 
-  public edit:boolean = false;
+  public edit: boolean = false;
 
-  openDialog(element: any, i: number) {
+  openDialog(element: Ifinance) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;

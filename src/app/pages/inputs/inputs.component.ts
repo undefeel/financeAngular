@@ -9,7 +9,7 @@ import { FinanceHistoryComponent } from '../finance-history/finance-history.comp
   styleUrls: ['./inputs.component.scss'],
   providers: [FinanceHistoryComponent]
 })
-export class InputsComponent implements OnInit {
+export class InputsComponent {
   inpShop: string = '';
   inpSum: string = '';
   
@@ -18,12 +18,12 @@ export class InputsComponent implements OnInit {
     this.financeHelper.getAllFinance();
   }
 
-  getShop (event: any) {
-    this.inpShop = event.target.value;
+  getShop (event: Event) {
+    this.inpShop = (event.target as HTMLInputElement).value;
   }
 
-  getSum (event: any) {
-    this.inpSum = event.target.value;    
+  getSum (event: Event) {
+    this.inpSum = (event.target as HTMLInputElement).value;    
   }
 
   addFinance() {
@@ -31,7 +31,6 @@ export class InputsComponent implements OnInit {
       text: this.inpShop,
       sum: this.inpSum
     }
-
     this.financeHelper.addNewFinance(finance).subscribe((v:Ifinance) => {
       this.financeHelper.getAllFinance();
     });
