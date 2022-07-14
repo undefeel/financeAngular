@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>MyFinance</h1>
+  <div class="actions">
+    <mat-form-field class="shop" appearance="outline">
+      <mat-label>Shop</mat-label>
+      <input matInput placeholder="IKEA" name="shop" [(ngModel)]="finance.text" #shop="ngModel" required (change)="getShop($event)">
+    </mat-form-field>
+    <mat-form-field class = "sum" appearance="outline">
+      <mat-label>Spend</mat-label>
+      <input matInput placeholder="500$" name="sum" [(ngModel)]="finance.sum" #sum="ngModel" required pattern="^[0-9]*$" (change)="getSum($event)">
+    </mat-form-field>
+
+    <button mat-raised-button  color = "primary" [disabled]="shop.invalid || sum.invalid" class="addFinanceElem" (click)="addFinance()">Add</button>
+  </div>
+</div>

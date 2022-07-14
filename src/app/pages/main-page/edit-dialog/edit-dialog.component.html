@@ -1,0 +1,17 @@
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Shop Name</mat-label>
+    <input matInput value="{{data.text}}" name="shop" [(ngModel)]="data.text" 
+    #shop="ngModel" required (change)="takeEditShop($event)">
+  </mat-form-field>
+  
+  <mat-form-field class="last" appearance="fill">
+    <mat-label>Spended Sum</mat-label>
+    <input matInput type="text" value="{{data.sum}}" name="sum" [(ngModel)]="data.sum" 
+    #sum="ngModel" required pattern="^[0-9]*$" (change)="takeEditSum($event)">
+  </mat-form-field>
+  
+  <button [disabled]="shop.invalid || sum.invalid" mat-raised-button  color = "primary" (click)="save()">Done</button>
+  <button mat-stroked-button  color = "primary" (click)="cancel()" >Cancel</button>
+</div>
+

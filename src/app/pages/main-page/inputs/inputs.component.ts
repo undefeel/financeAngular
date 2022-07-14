@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FinanceHelperService } from 'src/app/services/finance-helper.service';
 import { Ifinance } from 'src/app/interfaces/finance.interface';
 import { FinanceHistoryComponent } from '../finance-history/finance-history.component';
@@ -26,12 +26,13 @@ export class InputsComponent {
     this.inpSum = (event.target as HTMLInputElement).value;    
   }
 
+  finance: Ifinance = {
+    text: this.inpShop,
+    sum: this.inpSum
+  }
+
   addFinance() {
-    const finance: Ifinance = {
-      text: this.inpShop,
-      sum: this.inpSum
-    }
-    this.financeHelper.addNewFinance(finance).subscribe((v:Ifinance) => {
+    this.financeHelper.addNewFinance(this.finance).subscribe((v:Ifinance) => {
       this.financeHelper.getAllFinance();
     });
   }
