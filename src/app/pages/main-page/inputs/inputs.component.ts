@@ -12,10 +12,15 @@ import { FinanceHistoryComponent } from '../finance-history/finance-history.comp
 export class InputsComponent {
   inpShop: string = '';
   inpSum: string = '';
+  summary: number = 0;
   
   constructor(private financeHelper: FinanceHelperService, private history: FinanceHistoryComponent) {  }
   ngOnInit(): void {
     this.financeHelper.getAllFinance();
+    this.financeHelper.Summary.subscribe(v => {
+      this.summary = v;
+    })
+    
   }
 
   getShop (event: Event) {
