@@ -7,5 +7,4 @@ import { MatButton } from '@angular/material/button';
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent {
-  constructor() { }
 }

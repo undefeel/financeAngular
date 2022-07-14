@@ -42,9 +42,6 @@ export class FinanceHistoryComponent implements OnInit {
 
     dialogR.afterClosed().subscribe(
       data => {        
-        // this.financeHelper.updateFinance(data).subscribe((v) => {
-        //   this.financeHelper.getAllFinance();
-        // });
         this.financeHelper.getAllFinance();
         this.financeHelper.List.subscribe((v:Ifinance[]) => {
           this.finances = v;
