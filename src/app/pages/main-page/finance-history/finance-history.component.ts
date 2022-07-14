@@ -4,6 +4,7 @@ import { Ifinance } from 'src/app/interfaces/finance.interface';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-finance-history',
@@ -18,6 +19,7 @@ export class FinanceHistoryComponent implements OnInit {
   constructor(private financeHelper: FinanceHelperService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+
     this.financeHelper.List.subscribe((v:Ifinance[]) => {      
       this.finances = v;
     })
@@ -57,4 +59,6 @@ export class FinanceHistoryComponent implements OnInit {
       this.finances = v;
     })
   }
+
+  
 }

@@ -1,0 +1,27 @@
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+
+li {
+  background-color: #3f52b5;
+  color: white;
+  padding: 20px;
+  border: 2px solid white;
+  font-size: 30px;
+  width: 100%;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  width: 50%;
+}
