@@ -37,4 +37,8 @@ export class FinanceHelperService {
   public deleteFinance (deleteFinance: Ifinance) {    
     return this.http.delete<Ifinance>(`http://localhost:8001/deleteFinance/${deleteFinance._id}`).subscribe(v => {})
   }
+
+  public findFinance (id: string) {
+    return this.http.get<Ifinance>(`http://localhost:8001/findFinance/${id}`);
+  }
 }

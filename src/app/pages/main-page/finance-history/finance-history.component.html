@@ -24,6 +24,9 @@
       <button mat-icon-button color="primary" (click)="delete(i)">
         <mat-icon>delete</mat-icon>
       </button>
+      <a mat-icon-button color="primary" href="http://localhost:4200/single" target="_self" [routerLink]="['single/', element._id]" >
+        <mat-icon>launch</mat-icon>
+      </a>
   </td>
   </ng-container>
 

@@ -18,10 +18,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditDialogComponent } from './pages/main-page/edit-dialog/edit-dialog.component';
 import { ViewMainComponent } from './pages/main-page/view-main/view-main.component';
+import { SingleFinanceComponent } from './pages/single-finance/single-finance.component'
 
 const routes: Routes = [
   {path : '', component: ViewMainComponent},
-  {path: '**', component: NotFoundComponent}
+  {path: 'single/:id', component: SingleFinanceComponent},
+  {path: '**', component: NotFoundComponent},
 ]
 
 @NgModule({
@@ -32,6 +34,7 @@ const routes: Routes = [
     EditDialogComponent,
     NotFoundComponent,
     ViewMainComponent,
+    SingleFinanceComponent
   ],
   imports: [
     BrowserModule,
