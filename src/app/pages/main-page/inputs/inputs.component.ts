@@ -20,7 +20,6 @@ export class InputsComponent {
     this.financeHelper.Summary.subscribe(v => {
       this.summary = v;
     })
-    
   }
 
   getShop (event: Event) {

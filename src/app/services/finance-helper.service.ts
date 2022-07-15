@@ -10,7 +10,7 @@ import { catchError, throwError } from 'rxjs';
 })
 export class FinanceHelperService {
   public List: BehaviorSubject<Ifinance[]> = new BehaviorSubject<Ifinance[]>([]);
-        public Summary: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  public Summary: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   
   httpOptions = {headers: new HttpHeaders({
       'Content-Type':  'application/json'
