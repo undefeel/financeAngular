@@ -10,6 +10,7 @@ import { catchError, throwError } from 'rxjs';
 })
 export class FinanceHelperService {
   public List: BehaviorSubject<Ifinance[]> = new BehaviorSubject<Ifinance[]>([]);
+  public Summary: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   
   httpOptions = {headers: new HttpHeaders({
       'Content-Type':  'application/json'
@@ -21,6 +22,7 @@ export class FinanceHelperService {
   public getAllFinance() {
     return this.http.get<Ifinance[]>('http://localhost:8001/allFinance').subscribe((v:Ifinance[]) => {
       this.List.next(v);
+      this.downloadSum();
     })
   }
 
@@ -40,5 +42,15 @@ export class FinanceHelperService {
 
   public findFinance (id: string) {
     return this.http.get<Ifinance>(`http://localhost:8001/findFinance/${id}`);
+  }
+  
+  public downloadSum () {
+    let sum: number = 0;
+    this.List.subscribe(v => {
+      v.forEach(element => {
+        sum += Number(element.sum);
+      });
+      this.Summary.next(sum);
+    })
   }
 }

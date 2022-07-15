@@ -10,6 +10,8 @@
       <input matInput placeholder="500$" name="sum" [(ngModel)]="finance.sum" #sum="ngModel" required pattern="^[0-9]*$" (change)="getSum($event)">
     </mat-form-field>
 
-    <button mat-raised-button  color = "primary" [disabled]="shop.invalid || sum.invalid" class="addFinanceElem" (click)="addFinance()">Add</button>
+   
+   <button mat-raised-button  color = "primary" [disabled]="shop.invalid || sum.invalid" class="addFinanceElem" (click)="addFinance()">Add</button>
+   <p class="sumar">Summary you spend: {{summary}}</p>
   </div>
 </div>
